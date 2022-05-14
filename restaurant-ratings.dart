@@ -43,20 +43,17 @@ void main() {
   final ratingSumArr = [];
 
   for (var restaurant in restaurants) {
-    double ratingSum = 0.0;
-
-//     Each restaurant's rating
+    var ratingSum = 0.0;
     final ratings = restaurant['ratings'] as List<double>;
-
-//     Sum up each ratings array per iteration and add it to a List
-    ratings.forEach((e) => ratingSum += e);
-    ratingSumArr.add(ratingSum);
-
-//     Iterate over Arr containing sum of ratings to calc average and add it to nested Map.
-
-    for (int i = 0; i < ratingSumArr.length; i++) {
-      restaurant['avgRating'] = (ratingSumArr[i] / ratings.length);
+    for (var rating in ratings) {
+      ratingSum += rating;
     }
+
+    // With ratingSum for each restaurant per iteration, we can find aveRating
+
+    final aveRating = ratingSum / ratings.length;
+
+    restaurant['avgRating'] = aveRating;
   }
 
   print(restaurants);
