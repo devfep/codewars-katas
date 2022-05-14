@@ -40,8 +40,6 @@ void main() {
     },
   ];
 
-  final ratingSumArr = [];
-
   for (var restaurant in restaurants) {
     var ratingSum = 0.0;
     final ratings = restaurant['ratings'] as List<double>;
@@ -53,7 +51,7 @@ void main() {
 
     final aveRating = ratingSum / ratings.length;
 
-    restaurant['avgRating'] = aveRating;
+    restaurant['avgRating'] = aveRating.toStringAsFixed(1);
   }
 
   print(restaurants);
